@@ -1,0 +1,14 @@
+.header{
+    background: $purple;
+    color:white;
+}
+.header__content {
+    display:flex;
+    justify-content: space-between;
+    max-width: $site-max-width;
+    margin:0 auto;
+    padding: $space;
+    h1 {
+        margin:0;
+    }
+}
