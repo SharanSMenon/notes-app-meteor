@@ -18,7 +18,8 @@ export default class Signup extends React.Component {
         }
         Accounts.createUser({ email, password }, (err) => {
             if (err) {
-                this.setState({ error: err.reason });
+               var reason = (err.reason === "Email failed regular expression validation") ? "Email is not valid" : err.reason
+                this.setState({ error: reason });
             } else {
                 this.setState({ error: "" })
             }

@@ -1,11 +1,13 @@
 import React from 'react';
+import { Meteor } from 'meteor/meteor';
 
 import PrivateHeader from './PrivateHeader'
+import NoteList from './NoteList'
 export default () => (
     <div>
-        <PrivateHeader title="Dashboard"/>
+        <PrivateHeader title="Notes"/>
         <div className="wrapper">
-            <p>Data</p>
+            <NoteList />
         </div>
     </div>
 )
