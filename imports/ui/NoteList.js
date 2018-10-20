@@ -10,8 +10,7 @@ import NoteListEmptyItem from './NoteListEmptyItem';
 import FlipMove from 'react-flip-move'
 export const NoteList = (props) => {
     return (
-        <div>
-            <p>Note List</p>
+        <div className="item-list">
             <NoteListHeader />
             {(props.notes.length === 0) ? <NoteListEmptyItem />: undefined}
             <FlipMove>

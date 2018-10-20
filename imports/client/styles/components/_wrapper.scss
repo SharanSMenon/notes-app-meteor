@@ -1,5 +1,16 @@
-.wrapper {
+.page-content {
     margin: 0 auto;
     max-width: $site-max-width;
+    height:$page-content-height;
     padding: 1.3rem;
+    display: flex;
+}
+.page-content__sidebar {
+    display:flex;
+    padding-right: $large-space;
+    width: $page-content-sidebar-width;
+}
+.page-content__main {
+    width: $page-content-main-width;
+    display: flex;
 }

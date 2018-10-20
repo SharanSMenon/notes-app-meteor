@@ -38,9 +38,20 @@
     background: #f9f9f9;
 }
 .button--header {
-    background: #3d0d99;
+    background: #0084f7;
     margin:0;
+    line-height:1;
+
     &:hover{
-        background: darken(#3d0d99, 15%);
+        background: darken(#0084f7, 15%);
+    }
+}
+.button-danger{
+    margin:0;
+    color:white;
+    background-color: firebrick;
+    border:1px solid darken(firebrick, 15%);
+    &:hover{
+        background-color: darken(firebrick, 15%)
     }
 }

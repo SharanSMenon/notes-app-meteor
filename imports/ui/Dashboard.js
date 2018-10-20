@@ -7,9 +7,14 @@ import Editor from './Editor'
 export default () => (
     <div>
         <PrivateHeader title="Notes"/>
-        <div className="wrapper">
-            <NoteList />
-            <Editor />
+        <div className="page-content">
+            <div className="page-content__sidebar">
+                <NoteList />
+            </div>      
+            <div className="page-content__main">
+                <Editor />
+            </div>      
+            
         </div>
     </div>
 )
