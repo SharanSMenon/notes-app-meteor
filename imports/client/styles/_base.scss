@@ -36,4 +36,5 @@ input[type=text], input[type=email], input[type=password], textarea{
     margin-bottom: $space;
     padding:$padding-med;
     border: 1px solid $light-grey;
+    -webkit-overflow-scrolling: touch;
 }
