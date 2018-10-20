@@ -1,7 +1,7 @@
 import React from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 
 import { Notes } from './../api/notes';
 
@@ -14,8 +14,13 @@ export const NoteListHeader = (props) => {
                 New Note
             </button>
         </div>
-    )
-}
+    );
+};
+
+NoteListHeader.propTypes = {
+    meteorCall: PropTypes.func.isRequired
+};
+
 export default createContainer(() => {
     return {
         meteorCall: Meteor.call
