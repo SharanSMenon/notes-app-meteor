@@ -7,15 +7,18 @@ import { Notes } from './../api/notes';
 import NoteListHeader from './NoteListHeader'
 import NoteListItem from './NoteListItem';
 import NoteListEmptyItem from './NoteListEmptyItem';
+import FlipMove from 'react-flip-move'
 export const NoteList = (props) => {
     return (
         <div>
             <p>Note List</p>
             <NoteListHeader />
             {(props.notes.length === 0) ? <NoteListEmptyItem />: undefined}
-            {props.notes.map((note) => {
-                return <NoteListItem note={note} key={note._id}/>
-            })}
+            <FlipMove>
+                {props.notes.map((note) => {
+                    return <NoteListItem note={note} key={note._id}/>
+                })}
+            </FlipMove>
         </div>
     )
 };
@@ -29,7 +32,11 @@ export default createContainer(() => {
     Meteor.subscribe('notes');
 
     return {
-        notes: Notes.find().fetch().map((note) => {
+        notes: Notes.find({}, {
+            sort: {
+                updatedAt: -1
+            }
+        }).fetch().map((note) => {
             return {
                 ...note,
                 selected: (selectedNoteId === note._id)
