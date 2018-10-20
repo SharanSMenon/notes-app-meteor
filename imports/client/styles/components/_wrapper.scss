@@ -2,15 +2,25 @@
     margin: 0 auto;
     max-width: $site-max-width;
     height:$page-content-height;
-    padding: 1.3rem;
+    padding: none;
     display: flex;
+    @include desktop {
+        padding:$large-space $space;
+    }
 }
 .page-content__sidebar {
-    display:flex;
+    //display:flex;
+    display:none;
     padding-right: $large-space;
     width: $page-content-sidebar-width;
+    @include desktop {
+        display:flex;
+    }
 }
 .page-content__main {
-    width: $page-content-main-width;
     display: flex;
+    width:100%;
+    @include desktop {
+        width: $page-content-main-width;
+    }
 }
