@@ -19,10 +19,13 @@
 }
 .boxed-view--modal {
     background: fade-out($light-grey, .3);
+    outline: none;
     position: fixed;
+    border: 2px solid $boxed-view-border-color;
     top:0;
     left:0;
     right:0;
     bottom:0;
+    z-index: 2;
 
 }
