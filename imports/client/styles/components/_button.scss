@@ -38,12 +38,12 @@
     background: #f9f9f9;
 }
 .button--header {
-    background: #0084f7;
+    background: $header-button-color;
     margin:0;
     line-height:1;
 
     &:hover{
-        background: darken(#0084f7, 15%);
+        background: darken($header-button-color, 15%);
     }
 }
 .button-danger{

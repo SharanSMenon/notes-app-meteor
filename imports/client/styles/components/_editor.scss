@@ -14,8 +14,11 @@
     margin-bottom: $large-space;
     outline: none;
     padding: $input-spacing;
+    transition:0.3s ease;
 }
-
+.editor__title:focus{
+    border-bottom: 2px solid $brand-primary;
+}
 .editor__body {
     flex-grow: 1;
     font-weight: 300;

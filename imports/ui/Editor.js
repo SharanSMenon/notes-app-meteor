@@ -67,7 +67,7 @@ export class Editor extends React.Component {
                         <h1>Confirm</h1>
                         <p>Are you sure that you want to delete</p>
                         <form onSubmit={(e) => e.preventDefault()}className="boxed-view__form">
-                            <button className="button button-danger" onClick={this.onDeleteNote}>Delete</button>
+                            <button ref="delete" className="button button-danger" onClick={this.onDeleteNote}>Delete</button>
                             <br/>
                             <button className="button button--secondary" onClick={this.handleModalClose} type="button ">Cancel</button>
                         </form>
