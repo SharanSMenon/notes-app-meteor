@@ -8,19 +8,42 @@ import NoteListHeader from './NoteListHeader'
 import NoteListItem from './NoteListItem';
 import NoteListEmptyItem from './NoteListEmptyItem';
 import FlipMove from 'react-flip-move'
-export const NoteList = (props) => {
-    return (
-        <div className="item-list">
-            <NoteListHeader />
-            {(props.notes.length === 0) ? <NoteListEmptyItem />: undefined}
-            <FlipMove>
-                {props.notes.map((note) => {
-                    return <NoteListItem note={note} key={note._id}/>
-                })}
-            </FlipMove>
-        </div>
-    )
-};
+export class NoteList extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            filters:''
+        }
+    }
+    onFilterChange(e) {
+        console.log(this.props)
+        this.setState({
+            filters: e.target.value
+        })
+    }
+    render() {
+        const notes = this.props.notes.filter(note => note.title.toLowerCase().includes(this.state.filters.toLowerCase()))
+        return (
+            <div className="item-list">
+                <NoteListHeader />
+                <div className="item-list__input">
+                    <input 
+                        type="text" 
+                        placeholder="Search..."
+                        value={this.state.filters}
+                        onChange={this.onFilterChange.bind(this)}
+                        />
+                </div>
+                {(notes.length === 0) ? <NoteListEmptyItem />: undefined}
+                <FlipMove>
+                    {notes.map((note) => {
+                        return <NoteListItem note={note} key={note._id}/>
+                    })}
+                </FlipMove>
+            </div>
+        )
+    }
+}
 
 NoteList.propTypes = {
     notes: PropTypes.array.isRequired

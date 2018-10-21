@@ -11,8 +11,14 @@
     display: flex;
     flex-direction: column;
     padding: $space;
+    padding-bottom:0;
+    margin:0;
 }
-
+.item-list__input {
+    display: flex;
+    flex-direction: column;
+    padding: 0 $space $space $space;
+}
 .item {
     border-left: $item-border-width solid transparent;
     cursor: pointer;
