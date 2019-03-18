@@ -5,8 +5,10 @@ import { Session } from 'meteor/session';
 import { createContainer } from 'meteor/react-meteor-data';
 import { Notes } from '../api/notes';
 import PropTypes from 'prop-types';
+import 'react-quill/dist/quill.snow.css';
 import { browserHistory } from 'react-router'
-import Modal from 'react-modal'
+import Modal from 'react-modal';
+import ReactQuill from "react-quill";
 // Create editor class
 export class Editor extends React.Component {
     constructor(props) {
@@ -14,7 +16,21 @@ export class Editor extends React.Component {
         this.state = {
             title: '',
             body: '',
-            modalIsOpen: false
+            modalIsOpen: false,
+            modules:{
+                toolbar:[
+                    [{'header':[1,2,3,4]}], 
+                    [{'font':[]}],
+                    ['bold', 'italic', 'underline', 'strike'], 
+                    [{'color':[]}, { 'background': [] }],
+                    ['link'],
+                    [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                    [{ 'script': 'sub'}, { 'script': 'super' }],
+                    ['blockquote'],
+                    [{ 'align': [] }]
+                
+                ]
+            }
         }
         this.handleBodyChange = this.handleBodyChange.bind(this);
         this.handleTitleChange = this.handleTitleChange.bind(this);
@@ -22,7 +38,7 @@ export class Editor extends React.Component {
         this.handleModalClose = this.handleModalClose.bind(this)
     }
     handleBodyChange(e) {
-        const body = e.target.value
+        const body = e
         this.setState({ body })
         this.props.call('notes.update', this.props.note._id, { body });
     }
@@ -66,9 +82,9 @@ export class Editor extends React.Component {
                     >
                         <h1>Confirm</h1>
                         <p>Are you sure that you want to delete</p>
-                        <form onSubmit={(e) => e.preventDefault()}className="boxed-view__form">
+                        <form onSubmit={(e) => e.preventDefault()} className="boxed-view__form">
                             <button ref="delete" className="button button-danger" onClick={this.onDeleteNote}>Delete</button>
-                            <br/>
+                            <br />
                             <button className="button button--secondary" onClick={this.handleModalClose} type="button ">Cancel</button>
                         </form>
                     </Modal>
@@ -78,19 +94,23 @@ export class Editor extends React.Component {
                         onChange={this.handleTitleChange}
                         className="editor__title"
                     />
-                    <textarea
-                        value={this.state.body}
-                        placeholder="Enter note here..."
+                    <ReactQuill
+                        theme="snow"
                         onChange={this.handleBodyChange}
-                        className="editor__body"
-                    ></textarea>
+                        value={this.state.body || ''}
+                        className="react-editor"
+                        style={{
+                            height:"25rem"
+                        }}
+                        modules={this.state.modules}
+                    />
                     <div>
                         <button onClick={() => {
                             this.setState({
                                 modalIsOpen: true
                             })
                         }}
-                        className="button button-danger">Delete Note</button>
+                            className="button button-danger">Delete Note</button>
                     </div>
                 </div>
             )

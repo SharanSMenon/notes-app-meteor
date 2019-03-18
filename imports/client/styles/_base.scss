@@ -43,3 +43,9 @@ input[type=text], input[type=email], input[type=password], textarea{
 input[type=text]:focus, input[type=email]:focus, input[type=password]:focus, textarea:focus {
     border-color: $brand-primary;
 }
+.react-editor{
+    margin-bottom: 8rem;
+    @media (max-width:$breakpoint) {
+        margin-bottom:10rem;
+    }
+}
